@@ -7,6 +7,7 @@ import CreatePost from './pages/CreatePost'
 import PostPage from './pages/PostPage'
 import NotFound from './pages/NotFound'
 import GlobalContext from './contexts/GlobalContext'
+import PostsList from './components/MainSections/PostsList'
 import './App.css'
 
 function App() {
@@ -17,7 +18,7 @@ function App() {
 
     <>
 
-      <GlobalContext.Provider value={{ api }}>
+      <GlobalContext.Provider value={{ api, PostsList }}>
         <BrowserRouter>
           <Routes>
             <Route element={<DefaultLayout />}>

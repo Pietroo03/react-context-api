@@ -1,5 +1,4 @@
 import { useState, useEffect, useContext } from "react";
-import PostsList from "../components/MainSections/PostsList";
 import GlobalContext from "../contexts/GlobalContext";
 
 const api_endpoint = '/posts'
@@ -8,7 +7,7 @@ export default function Posts() {
 
     const [postsData, setPostsData] = useState({})
 
-    const { api } = useContext(GlobalContext)
+    const { api, PostsList } = useContext(GlobalContext)
 
     function fetchData(url = api + api_endpoint) {
         fetch(url)
