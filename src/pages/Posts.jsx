@@ -1,14 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import PostsList from "../components/MainSections/PostsList";
+import GlobalContext from "../contexts/GlobalContext";
 
-const api_server = 'http://127.0.0.1:3000'
 const api_endpoint = '/posts'
 
 export default function Posts() {
 
     const [postsData, setPostsData] = useState({})
 
-    function fetchData(url = api_server + api_endpoint) {
+    const { api } = useContext(GlobalContext)
+
+    function fetchData(url = api + api_endpoint) {
         fetch(url)
             .then(resp => resp.json())
             .then(data => {

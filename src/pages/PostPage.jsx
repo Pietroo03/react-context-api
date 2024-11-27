@@ -1,12 +1,14 @@
 import { useParams, useNavigate, Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import GlobalContext from "../contexts/GlobalContext";
 
 export default function PostPage() {
 
     const navigate = useNavigate()
     const [post, setPost] = useState(null)
     const { slug } = useParams()
-    const url = `http://127.0.0.1:3000/posts/${slug}`
+    const { api } = useContext(GlobalContext)
+    const url = `${api}/posts/${slug}`
 
     useEffect(() => {
         fetch(url)
@@ -39,7 +41,7 @@ export default function PostPage() {
                                 <div className="col">
                                     <div className="card h-100 shadow-sm border-light">
                                         <img
-                                            src={`http://127.0.0.1:3000/${post.image}`}
+                                            src={`${api}/${post.image}`}
                                             className="card-img-top img-fluid"
                                             alt={post.title}
                                             style={{ objectFit: 'cover' }}
