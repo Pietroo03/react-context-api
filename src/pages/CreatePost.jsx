@@ -1,10 +1,12 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import AddPost from "../components/MainSections/AddPostForm"
+import GlobalContext from "../contexts/GlobalContext"
 
-const api_server = 'http://127.0.0.1:3000'
 const api_endpoint = '/posts'
 
 export default function CreatePost() {
+
+    const { api } = useContext(GlobalContext)
 
     const [formData, setFormData] = useState({
         title: '',
@@ -49,7 +51,7 @@ export default function CreatePost() {
             data: [...prevData.data, newArticleData]
         }))
 
-        fetch(api_server + api_endpoint, {
+        fetch(api + api_endpoint, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -78,7 +80,7 @@ export default function CreatePost() {
 
     }
 
-    function fetchData(url = api_server + api_endpoint) {
+    function fetchData(url = api + api_endpoint) {
         fetch(url)
             .then(resp => resp.json())
             .then(data => {

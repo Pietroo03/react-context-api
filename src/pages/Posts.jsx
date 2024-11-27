@@ -32,7 +32,7 @@ export default function Posts() {
             data: prevData.data.filter(post => post.slug !== deletePost)
         }))
 
-        fetch(`${api_server}${api_endpoint}/${deletePost}`, {
+        fetch(`${api}${api_endpoint}/${deletePost}`, {
             method: 'DELETE',
         })
             .then(resp => resp.json())
