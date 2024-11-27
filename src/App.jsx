@@ -6,27 +6,32 @@ import Posts from './pages/Posts'
 import CreatePost from './pages/CreatePost'
 import PostPage from './pages/PostPage'
 import NotFound from './pages/NotFound'
+import GlobalContext from './contexts/GlobalContext'
 import './App.css'
 
 function App() {
+
+  const api = 'http://127.0.0.1:3000'
 
   return (
 
     <>
 
-      <BrowserRouter>
-        <Routes>
-          <Route element={<DefaultLayout />}>
-            <Route path='/' element={<Home />} />
-            <Route path='/about' element={<About />} />
-            <Route path='/posts' element={<Posts />} />
-            <Route path='/create' element={<CreatePost />} />
-            <Route path='/posts/:slug' element={<PostPage />} />
-            <Route path='*' element={<NotFound />} />
+      <GlobalContext.Provider value={api}>
+        <BrowserRouter>
+          <Routes>
+            <Route element={<DefaultLayout />}>
+              <Route path='/' element={<Home />} />
+              <Route path='/about' element={<About />} />
+              <Route path='/posts' element={<Posts />} />
+              <Route path='/create' element={<CreatePost />} />
+              <Route path='/posts/:slug' element={<PostPage />} />
+              <Route path='*' element={<NotFound />} />
 
-          </Route>
-        </Routes>
-      </BrowserRouter>
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </GlobalContext.Provider>
 
     </>
 
