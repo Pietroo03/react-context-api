@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom"
+import { useContext } from "react"
+import GlobalContext from "../../contexts/GlobalContext"
 
-export default function PostsList({ postsData, handleRemove, api_server }) {
+export default function PostsList({ postsData, handleRemove }) {
+
+    const { api } = useContext(GlobalContext)
 
     return (
         <section className="posts py-5 bg-light">
@@ -14,7 +18,7 @@ export default function PostsList({ postsData, handleRemove, api_server }) {
                                 <div className="card h-100 shadow-sm border-light">
                                     <Link to={`/posts/${post.slug}`}>
                                         <img
-                                            src={api_server + post.image}
+                                            src={api + post.image}
                                             className="card-img-top img-fluid"
                                             alt={post.title}
                                             style={{ objectFit: 'cover', height: '200px' }}

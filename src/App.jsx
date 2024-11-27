@@ -17,7 +17,7 @@ function App() {
 
     <>
 
-      <GlobalContext.Provider value={api}>
+      <GlobalContext.Provider value={{ api }}>
         <BrowserRouter>
           <Routes>
             <Route element={<DefaultLayout />}>
@@ -27,7 +27,6 @@ function App() {
               <Route path='/create' element={<CreatePost />} />
               <Route path='/posts/:slug' element={<PostPage />} />
               <Route path='*' element={<NotFound />} />
-
             </Route>
           </Routes>
         </BrowserRouter>

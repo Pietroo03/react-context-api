@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import PostsList from "../components/MainSections/PostsList";
 
-
 const api_server = 'http://127.0.0.1:3000'
 const api_endpoint = '/posts'
 
@@ -56,7 +55,7 @@ export default function Posts() {
             <main className="text-center pt-4 vh-100">
                 <h2 className="mt-4 text-primary">Posts List</h2>
 
-                <PostsList postsData={postsData} handleRemove={handleRemove} api_server={api_server} />
+                <PostsList postsData={postsData} handleRemove={handleRemove} />
 
             </main>
 
